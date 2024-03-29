@@ -13,4 +13,8 @@ export class JwtManager {
     );
     return userjwt;
   }
+
+  static verifyToken(jwtString: string) {
+    return jwt.verify(jwtString, process.env.JWT_SECRET_KEY!);
+  }
 }
