@@ -3,7 +3,7 @@ import buildClient from "../api/build-client";
 
 const LandingPage = ({ currentUser }) => {
   console.log("Im on the browser", currentUser);
-  return <div>{currentUser?.email ? currentUser?.email : "LandingPage"}</div>;
+  return <h1>{currentUser?.email ? currentUser?.email : "LandingPage"}</h1>;
 };
 
 LandingPage.getInitialProps = async (context) => {
