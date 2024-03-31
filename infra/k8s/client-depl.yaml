@@ -1,0 +1,31 @@
+apiVersion: apps/v1  # version
+kind: Deployment     # service 
+metadata:            
+  name: client-depl    # name of the pod
+spec:
+  replicas: 1        # replicas to run
+  selector:          # selectro to match the name of the pod
+    matchLabels:
+      app: client
+  template:
+    metadata:
+      labels:       # label to start the pod with the name (so that it can later call with selector)
+        app: client
+    spec:
+      containers:
+        - name: client
+          image: anaksct/ticketing-client  # created image name for the deployment of the pod
+---
+
+apiVersion: v1      # verion
+kind: Service       # service
+metadata:
+  name: client-srv    # name of the service
+spec:               # when writing service in the same pod, it is default CLUSTERIP-SERVICE
+  selector:         # selector for which pod
+    app: client
+  ports:
+    - name: client
+      protocol: TCP
+      port: 3000        # actual port the pod is hosted
+      targetPort: 3000  # target port for the service for other pods to connect
