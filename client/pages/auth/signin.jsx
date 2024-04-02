@@ -2,7 +2,7 @@ import { useState } from "react";
 import useRequest from "../../hooks/use-request";
 import Router from "next/router";
 
-const signup = () => {
+const signin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { doRequest, errors } = useRequest({
@@ -12,7 +12,7 @@ const signup = () => {
       email,
       password,
     },
-    onSuccess: () => Router.push(('/'))
+    onSuccess: () => Router.push("/"),
   });
 
   const onSubmit = async (e) => {
@@ -49,4 +49,4 @@ const signup = () => {
   );
 };
 
-export default signup;
+export default signin;
