@@ -2,9 +2,7 @@ import express, { Request, Response } from "express";
 import { signupValidation } from "../validations";
 import "express-async-errors";
 import { User } from "../models/user";
-import { BadRequestError } from "../errors/bad-request-error";
-import { validateRequest } from "../middlewares/validate-request";
-import { JwtManager } from "../services/jwt";
+import { validateRequest, BadRequestError, JwtManager } from "@anaks-ticketing-ms/common"
 
 const router = express.Router();
 

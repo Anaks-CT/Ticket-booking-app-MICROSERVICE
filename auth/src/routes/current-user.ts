@@ -1,6 +1,5 @@
 import express from "express";
-import { JwtManager } from "../services/jwt";
-import { currentUser } from "../middlewares/current-user";
+import { currentUser } from "@anaks-ticketing-ms/common";
 
 const router = express.Router();
 

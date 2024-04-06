@@ -7,8 +7,7 @@ import { signinRouter } from "./routes/signin";
 import { signoutRouter } from "./routes/signout";
 import { signupRouter } from "./routes/signup";
 
-import { errorHandler } from "./middlewares/error-handler";
-import { NotFoundError } from "./errors/not-found-error";
+import { errorHandler, NotFoundError } from "@anaks-ticketing-ms/common"
 
 const app = express();
 app.set("trust proxy", true); // trust the proxy that is coming from ingress enginx traffics
