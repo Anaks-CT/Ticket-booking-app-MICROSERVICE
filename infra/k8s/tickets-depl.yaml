@@ -1,23 +1,23 @@
 apiVersion: apps/v1  # version
 kind: Deployment     # service 
 metadata:            
-  name: auth-depl    # name of the pod
+  name: tickets-depl    # name of the pod
 spec:
   replicas: 1        # replicas to run
   selector:          # selectro to match the name of the pod
     matchLabels:
-      app: auth
+      app: tickets
   template:
     metadata:
       labels:       # label to start the pod with the name (so that it can later call with selector)
-        app: auth
+        app: tickets
     spec:
       containers:
-        - name: auth
-          image: anaksct/auth  # created image name for the deployment of the pod
+        - name: tickets
+          image: anaksct/tickets  # created image name for the deployment of the pod
           env:
             - name: MONGO_URI
-              value: 'mongodb://auth-mongo-srv:27017/auth'
+              value: 'mongodb://tickets-mongo-srv:27017/tickets'
             - name: JWT_SECRET_KEY  # secret name that should be used in pod
               valueFrom:
                 secretKeyRef:
@@ -28,12 +28,12 @@ spec:
 apiVersion: v1      # verion
 kind: Service       # service
 metadata:
-  name: auth-srv    # name of the service
+  name: tickets-srv    # name of the service
 spec:               # when writing service in the same pod, it is default CLUSTERIP-SERVICE
   selector:         # selector for which pod
-    app: auth
+    app: tickets
   ports:
-    - name: auth
+    - name: tickets
       protocol: TCP
       port: 3000        # actual port the pod is hosted
       targetPort: 3000  # target port for the service for other pods to connect
